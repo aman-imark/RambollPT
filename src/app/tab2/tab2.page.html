@@ -1,0 +1,83 @@
+<!-- <ion-header  class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/main/tabs/tab1"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header> -->
+
+
+<ion-content [fullscreen]="true">
+
+  <div style="background-color: #dc2525;z-index:100;">
+    <ion-item lines="none" style="--background:transparent;--color:#fff;padding:8px 0px;">
+      Bluetooth enabled devices(Testing): 
+      <ion-buttons slot="end">
+        <ion-button style="height:40px;width:40px;border-radius: 100%;background:#f4f5f8;" (click)="reloadBle()">
+          <ion-icon slot="icon-only" name="refresh-outline" color="primary" style="font-size:35px;"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-item> 
+   <ion-item lines="none" style="--background:transparent;--color:#fff;">
+      <ion-text>Active Beacon is: {{activeBeacon}}</ion-text>
+   </ion-item>
+
+    <div *ngFor="let dv of ble_devices2">
+      <ion-item *ngIf="dv.name" style="--background:transparent;--color:#000;">
+      <ion-label class="ion-text-nowrap" style="--color:#000;color:#000;">
+          <h5>{{dv.name}}</h5> 
+          <p>{{dv.id}}</p>
+      </ion-label>
+     </ion-item>
+    </div>
+
+
+    <!-- <div *ngFor="let rs of filteredResult; let i=index">
+      <ion-item  style="--background:transparent;--color:#000;">
+      <ion-label class="ion-text-nowrap" style="--color:#000;color:#000;">
+          <h5>{{i+1}} : {{rs}}</h5> 
+      </ion-label>
+     </ion-item>
+    </div>
+
+    <div *ngFor="let dv of ble_devices">
+      <ion-item *ngIf="dv.name" style="--background:transparent;--color:#000;">
+      <ion-label class="ion-text-nowrap" style="--color:#000;color:#000;">
+          <h5>{{dv.name}}</h5> 
+          <p>{{dv.id}}</p>
+      </ion-label>
+     </ion-item>
+    </div> -->
+  </div>
+
+
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div *ngIf="bluetoothStatus == 'disabled'" class="ion-padding-horizontal" style="position: absolute; width:100%; top: 50%; right: 50%; transform: translate(50%,-50%);">
+    <p style="font-weight: 500;font-size:18px;color: #9e9e9e;">Your Bluetooth is OFF, So please Turn <ion-text color="primary">ON</ion-text> the bluetooth and Refresh the page.</p>
+  </div>
+  <div *ngIf="!activeBeacon && bluetoothStatus == 'enabled'" class="ion-padding-horizontal" style="position: absolute; width:100%; top: 50%; right: 50%; transform: translate(50%,-50%);">
+    <p style="font-weight: 500;font-size:18px;color: #9e9e9e;">You are not in any Beacon range, So please go to the nearest Beacon Range...</p>
+  </div>
+
+
+  
+  <div *ngIf="activeBeacon" style="height:92vh;position: relative;">
+    <img *ngIf="activeBeacon == 'KBPro_212431'" src="assets/wayF1.png" style="height:100%;">
+    <img *ngIf="activeBeacon == 'KBPro_212316'" src="assets/wayF2.png" style="height:100%;">
+    <img *ngIf="activeBeacon == 'KBPro_212314'" src="assets/wayF3.png" style="height:100%;">
+    <img *ngIf="activeBeacon == 'KBPro_211931'" src="assets/wayF4.png" style="height:100%;">
+  </div>
+
+
+  <ion-fab *ngIf="activeBeacon" vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="goto_tableBooking()">      
+      <ion-icon src="assets/seat-book-icon2.svg"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
+

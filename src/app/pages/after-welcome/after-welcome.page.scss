@@ -1,0 +1,17 @@
+.inner{
+    ion-item{
+       --background: transparent;
+       ion-label{
+        color:#fff;
+        font-weight:800;
+        font-size: 15px;
+       }
+    }
+}
+
+
+ion-radio-group{
+    ion-radio{
+        --color-checked:#fff;
+    }
+}

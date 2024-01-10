@@ -1,0 +1,39 @@
+<ion-header  class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/main/tabs/tab1"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+    <div style="max-width:600px;margin:auto;position: relative;top: 50%;transform: translateY(-50%);">
+      <div style="height:40vh;width: 80%;margin: 0% auto;text-align:center;">
+        <img src="../assets/arrived-qst.svg" style="height:100%;">
+      </div>
+
+      <div class="ion-padding"  *ngIf="noClickStatus === false">
+        <div class="ion-padding ion-text-center"> <br>
+          <h4 style="color:#EE7981;font-weight: 800;">IS THE CLINIC CROWDED?</h4>
+          <p style="color:#949494;font-weight: 800;">If the clinic is crowded, would you like to wait somewhere else?</p>
+        </div>
+        <div class="ion-padding" style="display:flex; justify-content:space-evenly;color:#949494;">
+           <div  style="width:40%;"><ion-button  class="small-btn hex-button" (click)="yesClick()" color="danger" style="margin:auto;width:100%;">YES</ion-button></div>
+           <div  style="width:40%;"><ion-button  class="small-btn hex-button" (click)="noClick()"  style="margin:auto;--background:#B9B5B5;width:100%;">NO</ion-button></div>
+        </div>
+      </div>
+      <div class="ion-padding" *ngIf="noClickStatus === true">
+        <div class="ion-padding ion-text-center"> <br>
+          <h4 style="color:#EE7981;font-weight: 800;margin:0px 0px 5px;">THANK YOU!</h4>
+          <h4 style="color:#EE7981;font-weight: 800;margin:0px 0px 5px;">YOU HAVE ARRIVED</h4>
+          <p style="color:#949494;font-weight: 800;">Hope you have a good time at the appointment and have a great day ahead.</p>
+        </div>
+      </div>
+    </div>
+  
+
+</ion-content>
+
+<app-custom-tabs></app-custom-tabs>

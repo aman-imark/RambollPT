@@ -1,0 +1,26 @@
+ion-select{
+  ion-label{
+      font-weight:800;
+  }
+}
+
+
+.activTable {
+  // fill: #e3212d !important;
+  fill: #3171e0 !important;
+
+}
+
+.cls-red{
+fill: #e3212d !important;
+}
+
+.dot {
+  height: 6px;
+  width: 6px;
+  background-color: #949494;
+  border-radius: 50%;
+  display: inline-flex;
+  position: relative;
+  top:1.5px;
+}

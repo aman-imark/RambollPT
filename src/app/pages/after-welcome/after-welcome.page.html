@@ -1,0 +1,97 @@
+
+
+
+
+<ion-content [fullscreen]="false">
+<div  style="margin:auto;max-width:600px;">
+
+    <div class="ion-padding">
+      <p style="color:#949494;font-weight: 800;text-align: center;">To help us, we need a little information.</p>
+    </div>        
+
+    <div style="width:80%;margin:auto;">
+      <p style="color:#EE7981;font-weight: 800;text-align: center;margin: 1vh;">What was your mode of transport to reach the hospital?</p>
+
+      <ion-accordion-group class="ion-padding" mode="ios" (ionChange)="getAccordion_value($event)" [multiple]="true" [value]="['first','second']">
+        <ion-accordion mode="ios" value="first">
+          <ion-item slot="header" mode="ios" lines="none" style="--background:#EE7981;">
+            <ion-label class="ion-text-wrap" style="font-size: 16px;font-weight: 800;color:#fff;">Select an option </ion-label>
+          </ion-item>
+          <div class="inner" slot="content" style="background:#B9B5B5;">
+            <ion-radio-group [(ngModel)]="first">
+              <ion-item lines="inset">
+                <ion-label>BUS</ion-label>
+                <!-- <ion-radio slot="end" value="2.2"></ion-radio> -->
+                <ion-radio slot="end" value="bus"></ion-radio>
+              </ion-item>    
+              <ion-item lines="inset">
+                <ion-label>CAR</ion-label>
+                <!-- <ion-radio slot="end" value="4.2"></ion-radio> -->
+                <ion-radio slot="end" value="car"></ion-radio>
+              </ion-item>
+              <ion-item lines="inset">
+                <ion-label>MRT</ion-label>
+                <!-- <ion-radio slot="end" value="3.4"></ion-radio> -->
+                <ion-radio slot="end" value="mrt"></ion-radio>
+              </ion-item>
+              <ion-item lines="inset">
+                <ion-label>BICYCLE</ion-label>
+                <!-- <ion-radio slot="end" value="0.05"></ion-radio> -->
+                <ion-radio slot="end" value="bicycle"></ion-radio>
+              </ion-item>                            
+              <ion-item lines="inset">
+                <ion-label>OTHER</ion-label>
+                <!-- <ion-radio slot="end" value="1"></ion-radio> -->
+                <ion-radio slot="end" value="other"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </div>
+        </ion-accordion> <br>
+       
+
+      <p style="color:#EE7981;font-weight: 800;text-align: center;margin: 1vh;">How far did you travel to reach the hospital?</p>
+      <ion-accordion mode="ios" value="second">
+        <ion-item slot="header" mode="ios" lines="none" style="--background:#EE7981;">
+          <ion-label  class="ion-text-wrap" style="font-size: 16px;font-weight: 800;color:#fff;">Select an option </ion-label>
+        </ion-item>
+        <div class="inner" slot="content"  style="background:#B9B5B5;">
+          <ion-radio-group [(ngModel)]="second">
+       
+            <ion-searchbar [(ngModel)]="filterTerm" placeholder="Search..." color="medium" style="color:#fff;border:1px solid #fff"></ion-searchbar>
+
+          
+            <ion-item lines="inset" *ngFor="let bd of selectB_Data | filter: filterTerm">
+              <ion-label>{{bd.StartStation}}</ion-label>
+              <ion-radio slot="end" [value]="bd.StartStation+'/'+bd.DistanceMRT+'/'+bd.CarbonEmissionMRTkg+'/'+bd.DistanceBUS+'/'+bd.CarbonEmissionBUSkg+'/'+bd.DistanceCAR+'/'+bd.CarbonEmissionCARkg"></ion-radio>
+            </ion-item> 
+
+            <!-- <ion-item lines="inset">
+              <ion-label>ADMIRALTY</ion-label>
+              <ion-radio slot="end" value="22.9"></ion-radio>
+            </ion-item>  
+            <ion-item lines="inset">
+              <ion-label>ALJUNIED</ion-label>
+              <ion-radio slot="end" value="3.7"></ion-radio>
+            </ion-item>
+            <ion-item lines="inset">
+              <ion-label>ANG MO KIO</ion-label>
+              <ion-radio slot="end" value="8.5"></ion-radio>
+            </ion-item>
+            <ion-item lines="inset">
+              <ion-label>BARTLEY</ion-label>
+              <ion-radio slot="end" value="6.8"></ion-radio>
+            </ion-item>
+            <ion-item lines="inset">
+              <ion-label>BAYFRONT</ion-label>
+              <ion-radio slot="end" value="6.3"></ion-radio>
+            </ion-item> -->
+          </ion-radio-group>
+        </div>
+      </ion-accordion>
+      </ion-accordion-group>
+  </div>
+  
+</div>
+</ion-content>
+
+<!-- <app-custom-tabs></app-custom-tabs> -->
